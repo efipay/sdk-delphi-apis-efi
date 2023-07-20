@@ -1,0 +1,13 @@
+﻿[GroupBox1]
+Coordinates=73,10,79,58
+
+[Label1]
+Coordinates=10,10,53,58
+Visible=True
+
+[]
+Coordinates=135,78,91,36
+
+[txtBarcode]
+Coordinates=162,10,44,58
+
