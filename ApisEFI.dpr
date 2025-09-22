@@ -113,11 +113,8 @@ uses
   BodyOfConfigUpdate in 'Code\Api Open Finance\Utils\Classes\BodyOfConfigUpdate.pas',
   ViewOfListParticipants in 'Code\Api Open Finance\Utils\Views\ViewOfListParticipants.pas' {OfListParticipants},
   ofParticipantsEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofParticipantsEndpoints.pas',
-  BodyOfStartPixPayment in 'Code\Api Open Finance\Utils\Classes\BodyOfStartPixPayment.pas',
-  ViewOfStartPixPayment in 'Code\Api Open Finance\Utils\Views\ViewOfStartPixPayment.pas' {OfStartPixPayment},
-  ofPaymentPixEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofPaymentPixEndpoints.pas',
-  ViewOfListPixPayment in 'Code\Api Open Finance\Utils\Views\ViewOfListPixPayment.pas' {OfListPixPayment},
-  ViewOfDevolutionPix in 'Code\Api Open Finance\Utils\Views\ViewOfDevolutionPix.pas' {OfDevolutionPix},
+  BodyOFImmediateClass in 'Code\Api Open Finance\Utils\Classes\BodyOFImmediateClass.pas',
+  ofImmediatePaymentsEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofImmediatePaymentsEndpoints.pas',
   BodyOfDevolutionPix in 'Code\Api Open Finance\Utils\Classes\BodyOfDevolutionPix.pas',
   MainAberturaContas in 'Code\Api Abertura de Contas\Utils\MainAberturaContas.pas' {frmAberturaDeContas},
   ViewCreateAccount in 'Code\Api Abertura de Contas\Utils\Views\ViewCreateAccount.pas' {CreateAccount},
@@ -131,7 +128,48 @@ uses
   ViewAccountConfigWebhook in 'Code\Api Abertura de Contas\Utils\Views\ViewAccountConfigWebhook.pas' {AccountConfigWebhook},
   ViewAccountDetailWebhook in 'Code\Api Abertura de Contas\Utils\Views\ViewAccountDetailWebhook.pas' {AccountDetailWebhook},
   ViewAccountDeleteWebhook in 'Code\Api Abertura de Contas\Utils\Views\ViewAccountDeleteWebhook.pas' {AccountDeleteWebhook},
-  ViewAccountListWebhook in 'Code\Api Abertura de Contas\Utils\Views\ViewAccountListWebhook.pas' {AccountListWebhook};
+  ViewAccountListWebhook in 'Code\Api Abertura de Contas\Utils\Views\ViewAccountListWebhook.pas' {AccountListWebhook},
+  AutomaticPixEndpoints in 'Code\Api Pix\Utils\EndPoints\AutomaticPixEndpoints.pas',
+  ViewPixIdRecDetail in 'Code\Api Pix\Utils\Views\ViewPixIdRecDetail.pas' {ViewPixIdRecDetail},
+  BodyRecurrenceClass in 'Code\Api Pix\Utils\Classes\BodyRecurrenceClass.pas',
+  ViewPixCreateRecurrence in 'Code\Api Pix\Utils\Views\ViewPixCreateRecurrence.pas' {ViewPixCreateRecurrence},
+  ViewPixUpdateRecurrence in 'Code\Api Pix\Utils\Views\ViewPixUpdateRecurrence.pas' {ViewPixUpdateRecurrence},
+  BodyRequestRecurrenceClass in 'Code\Api Pix\Utils\Classes\BodyRequestRecurrenceClass.pas',
+  ViewPixCreateRequestRecurrence in 'Code\Api Pix\Utils\Views\ViewPixCreateRequestRecurrence.pas' {ViewPixCreateRequestRecurrence},
+  ViewPixIdSolicRecDetail in 'Code\Api Pix\Utils\Views\ViewPixIdSolicRecDetail.pas' {ViewPixIdSolicRecDetail},
+  ViewPixUpdateRequestRecurrence in 'Code\Api Pix\Utils\Views\ViewPixUpdateRequestRecurrence.pas' {ViewPixUpdateRequestRecurrence},
+  BodyAutomaticChargeClass in 'Code\Api Pix\Utils\Classes\BodyAutomaticChargeClass.pas',
+  ViewPixCreateAutomaticChargeTxid in 'Code\Api Pix\Utils\Views\ViewPixCreateAutomaticChargeTxid.pas' {ViewPixCreateAutomaticChargeTxid},
+  ViewPixCreateAutomaticCharge in 'Code\Api Pix\Utils\Views\ViewPixCreateAutomaticCharge.pas' {ViewPixCreateAutomaticCharge},
+  ViewPixUpdateAutomaticCharge in 'Code\Api Pix\Utils\Views\ViewPixUpdateAutomaticCharge.pas' {ViewPixUpdateAutomaticCharge},
+  ViewPixRetryAutomaticCharge in 'Code\Api Pix\Utils\Views\ViewPixRetryAutomaticCharge.pas' {ViewPixRetryAutomaticCharge},
+  ViewPixConfigWebhookRecCobr in 'Code\Api Pix\Utils\Views\ViewPixConfigWebhookRecCobr.pas' {ViewPixConfigWebhookRecCobr},
+  ofSchedulePaymentsEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofSchedulePaymentsEndpoints.pas',
+  ofRecurrencyPaymentsEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofRecurrencyPaymentsEndpoints.pas',
+  ofAutomaticPaymentsEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofAutomaticPaymentsEndpoints.pas',
+  ofBiometricPaymentsEndpoints in 'Code\Api Open Finance\Utils\Endpoints\ofBiometricPaymentsEndpoints.pas',
+  ViewOfCreateImmediateCharge in 'Code\Api Open Finance\Utils\Views\ViewOfCreateImmediateCharge.pas' {ViewOfCreateImmediateCharge},
+  ViewOfList in 'Code\Api Open Finance\Utils\Views\ViewOfList.pas' {ViewOfList},
+  ViewOfRefundImmediateCharge in 'Code\Api Open Finance\Utils\Views\ViewOfRefundImmediateCharge.pas' {ViewOfRefundImmediateCharge},
+  BodyOfScheduleClass in 'Code\Api Open Finance\Utils\Classes\BodyOfScheduleClass.pas',
+  ViewOfCreateScheduleCharge in 'Code\Api Open Finance\Utils\Views\ViewOfCreateScheduleCharge.pas' {ViewOfCreateScheduleCharge},
+  ViewOfRefundScheduleCharge in 'Code\Api Open Finance\Utils\Views\ViewOfRefundScheduleCharge.pas' {ViewOfRefundScheduleCharge},
+  ViewOfCancel in 'Code\Api Open Finance\Utils\Views\ViewOfCancel.pas' {ViewOfCancel},
+  BodyOfRecurrencyClass in 'Code\Api Open Finance\Utils\Classes\BodyOfRecurrencyClass.pas',
+  ViewOfCreateRecurrencyCharge in 'Code\Api Open Finance\Utils\Views\ViewOfCreateRecurrencyCharge.pas' {ViewOfCreateRecurrencyCharge},
+  ViewOfRefundRecurrencyCharge in 'Code\Api Open Finance\Utils\Views\ViewOfRefundRecurrencyCharge.pas' {ViewOfRefundRecurrencyCharge},
+  ViewOfCreateBiometricEnrollment in 'Code\Api Open Finance\Utils\Views\ViewOfCreateBiometricEnrollment.pas' {Form1},
+  BodyOfBiometricClass in 'Code\Api Open Finance\Utils\Classes\BodyOfBiometricClass.pas',
+  ViewOfListBiometricEnrollment in 'Code\Api Open Finance\Utils\Views\ViewOfListBiometricEnrollment.pas' {ViewOfListBiometricEnrollment},
+  ViewOfRevokeBiometricEnrollment in 'Code\Api Open Finance\Utils\Views\ViewOfRevokeBiometricEnrollment.pas' {ViewOfRevokeBiometricEnrollment},
+  ViewOfCreateBiometricCharge in 'Code\Api Open Finance\Utils\Views\ViewOfCreateBiometricCharge.pas' {ViewOfCreateBiometricCharge},
+  BodyOfAutomaticClass in 'Code\Api Open Finance\Utils\Classes\BodyOfAutomaticClass.pas',
+  ViewOfCreateAutomaticEnrollment in 'Code\Api Open Finance\Utils\Views\ViewOfCreateAutomaticEnrollment.pas' {ViewOfCreateAutomaticEnrollment},
+  ViewOfListAutomaticEnrollment in 'Code\Api Open Finance\Utils\Views\ViewOfListAutomaticEnrollment.pas' {ViewOfListAutomaticEnrollment},
+  ViewOfUpdateAutomaticEnrollment in 'Code\Api Open Finance\Utils\Views\ViewOfUpdateAutomaticEnrollment.pas' {ViewOfUpdateAutomaticEnrollment},
+  ViewOfCreateAutomaticCharge in 'Code\Api Open Finance\Utils\Views\ViewOfCreateAutomaticCharge.pas' {ViewOfCreateAutomaticCharge},
+  ViewOfListAutomaticCharge in 'Code\Api Open Finance\Utils\Views\ViewOfListAutomaticCharge.pas' {ViewOfListAutomaticCharge},
+  ViewOfRevokeAutomaticCharge in 'Code\Api Open Finance\Utils\Views\ViewOfRevokeAutomaticCharge.pas' {ViewOfRevokeAutomaticCharge};
 
 {$R *.res}
 
@@ -211,4 +249,82 @@ Application.CreateForm(TForm1, Form1);
 Application.CreateForm(TForm1, Form1);
 
 Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TDataModule1, DataModule1);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TDataModule2, DataModule2);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm5, Form5);
+
+Application.CreateForm(TForm6, Form6);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm5, Form5);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm5, Form5);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm1, Form1);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm5, Form5);
+
+Application.CreateForm(TForm6, Form6);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm5, Form5);
+
+Application.CreateForm(TForm6, Form6);
+
+Application.CreateForm(TForm4, Form4);
+
+Application.CreateForm(TForm4, Form4);
 

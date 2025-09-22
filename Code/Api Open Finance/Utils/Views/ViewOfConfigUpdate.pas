@@ -32,9 +32,6 @@ type
     procedure ClearRequestfields;
   end;
 
-var
-  OfConfigUpdate: TOfConfigUpdate;
-
 implementation
 
 {$R *.dfm}

@@ -2,7 +2,7 @@ object OfListParticipants: TOfListParticipants
   Left = 0
   Top = 0
   Caption = 'Modal da Requisi'#231#227'o'
-  ClientHeight = 114
+  ClientHeight = 93
   ClientWidth = 635
   Color = 6001140
   Font.Charset = DEFAULT_CHARSET
@@ -10,46 +10,44 @@ object OfListParticipants: TOfListParticipants
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     AlignWithMargins = True
     Left = 3
     Top = 3
     Width = 629
-    Height = 103
+    Height = 88
     Align = alTop
     TabOrder = 0
     object Label1: TLabel
-      Left = 3
-      Top = 3
-      Width = 77
+      Left = 9
+      Top = 6
+      Width = 303
       Height = 13
-      Caption = 'Nome (opcional)'
+      Caption = 'Nome - Obs.: Deixe vazio para retornar todos os participantes.'
     end
     object txtNome: TEdit
-      Left = 3
+      Left = 7
       Top = 22
-      Width = 619
+      Width = 615
       Height = 21
       TabOrder = 0
     end
     object btnConsultar: TButton
-      Left = 357
-      Top = 75
-      Width = 265
-      Height = 25
+      Left = 322
+      Top = 51
+      Width = 300
+      Height = 32
       Caption = 'Consultar'
       TabOrder = 1
       OnClick = btnConsultarClick
     end
     object btnCancelar: TButton
-      Left = 3
-      Top = 75
-      Width = 265
-      Height = 25
+      Left = 7
+      Top = 51
+      Width = 300
+      Height = 32
       Caption = 'Cancelar'
       TabOrder = 2
       OnClick = btnCancelarClick

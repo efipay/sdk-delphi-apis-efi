@@ -24,10 +24,10 @@ object MainEmissions: TMainEmissions
     TabOrder = 0
     object Label1: TLabel
       Left = 6
-      Top = 21
-      Width = 37
+      Top = 20
+      Width = 43
       Height = 13
-      Caption = 'ClientId'
+      Caption = 'Client_Id'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -37,10 +37,10 @@ object MainEmissions: TMainEmissions
     end
     object Label2: TLabel
       Left = 6
-      Top = 64
-      Width = 58
+      Top = 65
+      Width = 64
       Height = 13
-      Caption = 'ClientSecret'
+      Caption = 'Client_Secret'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -50,7 +50,7 @@ object MainEmissions: TMainEmissions
     end
     object Label3: TLabel
       Left = 6
-      Top = 133
+      Top = 135
       Width = 108
       Height = 13
       Caption = 'Identificador da Conta'
@@ -62,21 +62,21 @@ object MainEmissions: TMainEmissions
       ParentFont = False
     end
     object txtClientId: TEdit
-      Left = 6
+      Left = 4
       Top = 37
       Width = 237
       Height = 21
       TabOrder = 0
     end
     object txtClientSecret: TEdit
-      Left = 6
+      Left = 4
       Top = 83
       Width = 237
       Height = 21
       TabOrder = 1
     end
     object PostAuthorization: TButton
-      Left = 6
+      Left = 4
       Top = 206
       Width = 237
       Height = 26
@@ -85,7 +85,7 @@ object MainEmissions: TMainEmissions
       OnClick = PostAuthorizationClick
     end
     object MOAuth: TPanel
-      Left = 6
+      Left = 4
       Top = 179
       Width = 237
       Height = 26
@@ -119,7 +119,7 @@ object MainEmissions: TMainEmissions
       TabOrder = 4
     end
     object txtIdentifier: TEdit
-      Left = 6
+      Left = 4
       Top = 152
       Width = 237
       Height = 21

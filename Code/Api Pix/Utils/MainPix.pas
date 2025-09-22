@@ -77,6 +77,45 @@ type
     pixSplitDetailCharges: TButton;
     pixSplitLinkCharges: TButton;
     pixSplitUnlinkCharges: TButton;
+    MAutoPix: TPanel;
+    SAutoPix: TPanel;
+    menuRec: TButton;
+    menuSoliRec: TButton;
+    menuCobr: TButton;
+    menuWebhooks: TButton;
+    menuLocations: TButton;
+    subMenuRec: TPanel;
+    pixDetailRecurrenceAutomatic: TButton;
+    pixUpdateRecurrenceAutomatic: TButton;
+    pixListRecurrenceAutomatic: TButton;
+    pixCreateRecurrenceAutomatic: TButton;
+    subMenuSolicRec: TPanel;
+    pixCreateRequestRecurrenceAutomatic: TButton;
+    pixDetailRequestRecurrenceAutomatic: TButton;
+    pixUpdateRequestRecurrenceAutomatic: TButton;
+    subMenuCobr: TPanel;
+    pixCreateAutomaticChargeTxid: TButton;
+    pixUpdateAutomaticCharge: TButton;
+    pixDetailAutomaticCharge: TButton;
+    pixCreateAutomaticCharge: TButton;
+    pixListAutomaticCharge: TButton;
+    pixRetryRequestAutomatic: TButton;
+    subMenuWebhook: TPanel;
+    menuWebRec: TButton;
+    menuWebCobr: TButton;
+    subMenuWebRec: TPanel;
+    pixListWebhookRecurrenceAutomatic: TButton;
+    pixDeleteWebhookRecurrenceAutomatic: TButton;
+    pixConfigWebhookRecurrenceAutomatic: TButton;
+    subMenuWebCobr: TPanel;
+    pixListWebhookAutomaticCharge: TButton;
+    pixDeleteWebhookAutomaticCharge: TButton;
+    pixConfigWebhookAutomaticCharge: TButton;
+    subMenuLoc: TPanel;
+    pixCreateLocationRecurrenceAutomatic: TButton;
+    pixListLocationRecurrenceAutomatic: TButton;
+    pixDetailLocationRecurrenceAutomatic: TButton;
+    pixUnlinkLocationRecurrenceAutomatic: TButton;
     procedure pixListChargesClick(Sender: TObject);
     procedure pixCreateImmediateChargeClick(Sender: TObject);
     procedure pixUpdateChargeClick(Sender: TObject);
@@ -93,6 +132,7 @@ type
     procedure SGetv2Loc_id_QrCodeClick(Sender: TObject);
     procedure MLocClick(Sender: TObject);
     procedure MPixClick(Sender: TObject);
+    procedure MAutoPixClick(Sender: TObject);
     procedure SGetv2Loc_idClick(Sender: TObject);
     procedure pixListLocationClick(Sender: TObject);
     procedure pixCreateChargeClick(Sender: TObject);
@@ -141,6 +181,43 @@ type
     procedure pixSplitLinkChargesClick(Sender: TObject);
     procedure pixSplitUnlinkChargesClick(Sender: TObject);
     procedure pixSplitDetailChargesClick(Sender: TObject);
+    procedure menuRecMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure pixDetailRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixUpdateRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixListRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixCreateRecurrenceAutomaticClick(Sender: TObject);
+    procedure menuSolicRecMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure pixCreateRequestRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixDetailRequestRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixUpdateRequestRecurrenceAutomaticClick(Sender: TObject);
+    procedure menuCobrMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure pixCreateAutomaticChargeTxidClick(Sender: TObject);
+    procedure pixUpdateAutomaticChargeClick(Sender: TObject);
+    procedure pixDetailAutomaticChargeClick(Sender: TObject);
+    procedure pixCreateAutomaticChargeClick(Sender: TObject);
+    procedure pixListAutomaticChargeClick(Sender: TObject);
+    procedure pixRetryRequestAutomaticClick(Sender: TObject);
+    procedure menuWebhookMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure menuWebRecMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure pixConfigWebhookRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixListWebhookRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixDeleteWebhookRecurrenceAutomaticClick(Sender: TObject);
+    procedure menuWebCobrMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure pixConfigWebhookAutomaticChargeClick(Sender: TObject);
+    procedure pixListWebhookAutomaticChargeClick(Sender: TObject);
+    procedure pixDeleteWebhookAutomaticChargeClick(Sender: TObject);
+    procedure menuLocMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure pixCreateLocationRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixListLocationRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixDetailLocationRecurrenceAutomaticClick(Sender: TObject);
+    procedure pixUnlinkLocationRecurrenceAutomaticClick(Sender: TObject);
   private
     function GetClientID: String;
     function GetClientSecret: String;
@@ -163,7 +240,7 @@ implementation
 
 uses
   Connections, IdHTTP, ChargesEndpoints, LocEndpoints, WebhookEndpoints,
-  PixEndpoints, AccountEndpoints, KeyPixEndpoints, AuthenticationEndpoints, DueChargesEndpoints, ReportEndpoints, SplitPixEndpoints;
+  PixEndpoints, AccountEndpoints, KeyPixEndpoints, AuthenticationEndpoints, DueChargesEndpoints, ReportEndpoints, SplitPixEndpoints, AutomaticPixEndpoints;
 
 procedure TMainPix.MKeyPixClick(Sender: TObject);
 begin
@@ -205,6 +282,83 @@ end;
 procedure TMainPix.MPixClick(Sender: TObject);
 begin
   SPix.Visible := not SPix.Visible;
+end;
+
+procedure TMainPix.MAutoPixClick(Sender: TObject);
+begin
+  SAutoPix.Visible := not SAutoPix.Visible;
+end;
+
+procedure TMainPix.menuRecMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuRec.Visible := True;
+      subMenuSolicRec.Visible := False;
+      subMenuCobr.Visible := False;
+      subMenuWebhook.Visible := False;
+      subMenuWebRec.Visible := False;
+      subMenuWebCobr.Visible := False;
+      subMenuLoc.Visible := False;
+end;
+
+procedure TMainPix.menuSolicRecMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuSolicRec.Visible := True;
+      subMenuRec.Visible := False;
+      subMenuCobr.Visible := False;
+      subMenuWebhook.Visible := False;
+      subMenuWebRec.Visible := False;
+      subMenuWebCobr.Visible := False;
+      subMenuLoc.Visible := False;
+end;
+
+procedure TMainPix.menuCobrMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuCobr.Visible := True;
+      subMenuRec.Visible := False;
+      subMenuSolicRec.Visible := False;
+      subMenuWebhook.Visible := False;
+      subMenuWebRec.Visible := False;
+      subMenuWebCobr.Visible := False;
+      subMenuLoc.Visible := False;
+end;
+
+procedure TMainPix.menuWebhookMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuWebhook.Visible := True;
+      subMenuCobr.Visible := False;
+      subMenuRec.Visible := False;
+      subMenuSolicRec.Visible := False;
+      subMenuLoc.Visible := False;
+end;
+
+procedure TMainPix.menuWebRecMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuWebRec.Visible := True;
+      subMenuWebCobr.Visible := False;
+end;
+
+procedure TMainPix.menuWebCobrMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuWebRec.Visible := False;
+      subMenuWebCobr.Visible := True;
+end;
+
+procedure TMainPix.menuLocMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+begin
+      subMenuLoc.Visible := True;
+      subMenuWebRec.Visible := False;
+      subMenuWebCobr.Visible := False;
+      subMenuWebhook.Visible := False;
+      subMenuCobr.Visible := False;
+      subMenuRec.Visible := False;
+      subMenuSolicRec.Visible := False;
 end;
 
 procedure TMainPix.MWebHookClick(Sender: TObject);
@@ -445,7 +599,136 @@ begin
   LocEndpoints.PixUnsetTxid;
 end;
 
-//Encapsulando Credenciais
+/// Endpoints Pix Automático
+
+/// Recorrências
+
+procedure TMainPix.pixDetailRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixDetailRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixUpdateRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixUpdateRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixListRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixListRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixCreateRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixCreateRecurrenceAutomatic;
+end;
+
+/// Solicitação Recorrência
+
+procedure TMainPix.pixCreateRequestRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixCreateRequestRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixDetailRequestRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixDetailRequestRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixUpdateRequestRecurrenceAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixUpdateRequestRecurrenceAutomatic;
+end;
+
+/// Cobranças Recorrentes
+
+procedure TMainPix.pixCreateAutomaticChargeTxidClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixCreateAutomaticChargeTxid;
+end;
+
+procedure TMainPix.pixUpdateAutomaticChargeClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixUpdateAutomaticCharge;
+end;
+
+procedure TMainPix.pixDetailAutomaticChargeClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixDetailAutomaticCharge;
+end;
+
+procedure TMainPix.pixCreateAutomaticChargeClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixCreateAutomaticCharge;
+end;
+
+procedure TMainPix.pixListAutomaticChargeClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixListAutomaticCharge;
+end;
+
+procedure TMainPix.pixRetryRequestAutomaticClick(Sender: TObject);
+begin
+  AutomaticPixEndpoints.pixRetryRequestAutomatic;
+end;
+
+/// Webhook - Recorrência
+
+procedure TMainPix.pixConfigWebhookRecurrenceAutomaticClick(Sender: TObject);
+begin
+  WebhookEndpoints.pixConfigWebhookRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixListWebhookRecurrenceAutomaticClick(Sender: TObject);
+begin
+  WebhookEndpoints.pixListWebhookRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixDeleteWebhookRecurrenceAutomaticClick(Sender: TObject);
+begin
+  WebhookEndpoints.pixDeleteWebhookRecurrenceAutomatic;
+end;
+
+/// Webhook - Cobranças Recorrentes
+
+procedure TMainPix.pixConfigWebhookAutomaticChargeClick(Sender: TObject);
+begin
+  WebhookEndpoints.pixConfigWebhookAutomaticCharge;
+end;
+
+procedure TMainPix.pixListWebhookAutomaticChargeClick(Sender: TObject);
+begin
+  WebhookEndpoints.pixListWebhookAutomaticCharge;
+end;
+
+procedure TMainPix.pixDeleteWebhookAutomaticChargeClick(Sender: TObject);
+begin
+  WebhookEndpoints.pixDeleteWebhookAutomaticCharge;
+end;
+
+/// Payload Locations
+
+procedure TMainPix.pixCreateLocationRecurrenceAutomaticClick(Sender: TObject);
+begin
+  LocEndpoints.pixCreateLocationRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixListLocationRecurrenceAutomaticClick(Sender: TObject);
+begin
+  LocEndpoints.pixListLocationRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixDetailLocationRecurrenceAutomaticClick(Sender: TObject);
+begin
+  LocEndpoints.pixDetailLocationRecurrenceAutomatic;
+end;
+
+procedure TMainPix.pixUnlinkLocationRecurrenceAutomaticClick(Sender: TObject);
+begin
+  LocEndpoints.pixUnlinkLocationRecurrenceAutomatic;
+end;
+
+/// Encapsulando Credenciais
 function TMainPix.GetClientSecret: String;
 begin
   Result := txtClientSecret.Text;
@@ -505,6 +788,13 @@ procedure TMainPix.FormMouseMove(Sender: TObject; Shift: TShiftState; X,
 begin
   subMenuCobv.Visible := False;
   subMenuExtrato.Visible := False;
+  subMenuRec.Visible := False;
+  subMenuSolicRec.Visible := False;
+  subMenuCobr.Visible := False;
+  subMenuWebhook.Visible := False;
+  subMenuWebRec.Visible := False;
+  subMenuWebCobr.Visible := False;
+  subMenuLoc.Visible := False;
 end;
 
 function TMainPix.GetCertFile: String;

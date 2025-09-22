@@ -2,7 +2,7 @@ object ViewPixE2eidDetail: TViewPixE2eidDetail
   Left = 0
   Top = 0
   Caption = 'Modal da Requisi'#231#227'o'
-  ClientHeight = 261
+  ClientHeight = 103
   ClientWidth = 584
   Color = 6001140
   Font.Charset = DEFAULT_CHARSET
@@ -10,18 +10,17 @@ object ViewPixE2eidDetail: TViewPixE2eidDetail
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object GroupBox3: TGroupBox
     Left = 0
     Top = 0
     Width = 584
-    Height = 261
+    Height = 103
     Align = alClient
     Caption = '*Campos Obrigat'#243'rios'
     TabOrder = 0
+    ExplicitHeight = 261
     object Label1: TLabel
       Left = 6
       Top = 24

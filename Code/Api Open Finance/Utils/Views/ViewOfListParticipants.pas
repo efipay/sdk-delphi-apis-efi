@@ -26,9 +26,6 @@ type
 
   end;
 
-var
-  OfListParticipants: TOfListParticipants;
-
 implementation
 
 {$R *.dfm}

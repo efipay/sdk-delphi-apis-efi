@@ -14,6 +14,10 @@ procedure PixDetailLocation;
 procedure PixGenerateQRCode;
 procedure PixCreateLocation;
 procedure PixUnsetTxid;
+procedure pixCreateLocationRecurrenceAutomatic;
+procedure pixListLocationRecurrenceAutomatic;
+procedure pixDetailLocationRecurrenceAutomatic;
+procedure pixUnlinkLocationRecurrenceAutomatic;
 procedure QrCodeGenerator(texto: WideString);
 
 implementation
@@ -183,6 +187,135 @@ begin
       on E: Exception do
       begin
         ShowMessage('Erro na requisição DELETE /v2/loc/:id/txid '#13#10#13#10 + e.Message);
+      end;
+    end;
+  finally
+    Modal.ClearRequestfields;
+  end;
+end;
+
+/// Pix Automático
+procedure pixCreateLocationRecurrenceAutomatic;
+var
+  sResponse: string;
+begin
+  try
+    try
+
+      AccessToken := Connections.OauthToken;
+      HttpClient := Connections.SetupClient;
+
+      HttpClient.Request.CustomHeaders.Values['Authorization'] := ('Bearer '+ AccessToken.S['access_token']);
+
+      JsonToSend := TMemoryStream.Create;
+      WriteStringToStream(JsonToSend, '{}', IndyTextEncoding_UTF8);
+      JsonToSend.Position := 0;
+
+      sResponse := HttpClient.Post( MainPix.frmPix.Enviroment  + '/v2/locrec', JsonToSend);
+
+      MainPix.frmPix.MemoResponse.text := sresponse;
+
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Erro na requisição POST /v2/locrec '#13#10#13#10 + e.Message);
+      end;
+    end;
+  finally
+    //
+  end;
+end;
+
+procedure pixListLocationRecurrenceAutomatic;
+var
+  sResponse: string;
+  Modal    : TViewList;
+begin
+  try
+    try
+      if not Assigned(Modal) then
+        Application.CreateForm(TViewList, Modal);
+
+      if Modal.ShowModal = 1 then
+      begin
+        AccessToken := Connections.OauthToken;
+        HttpClient := Connections.SetupClient;
+
+        HttpClient.Request.CustomHeaders.Values['Authorization'] := ('Bearer '+ AccessToken.S['access_token']);
+        sResponse := HttpClient.Get(MainPix.frmPix.Enviroment + '/v2/locrec?inicio='
+                                  +Modal.StartDate+'&fim='+Modal.EndDate);
+
+        MainPix.frmPix.MemoResponse.text := sresponse;
+      end;
+
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Erro na requisição GET /v2/locrec '#13#10#13#10 + e.Message);
+      end;
+    end;
+  finally
+    Modal.ClearRequestfields;
+  end;
+end;
+
+procedure pixDetailLocationRecurrenceAutomatic;
+var
+  sResponse: string;
+  Modal    : TViewPixIdDetail;
+begin
+  try
+    try
+      if not Assigned(Modal) then
+        Application.CreateForm(TViewPixIdDetail, Modal);
+
+      if Modal.ShowModal = 1 then
+      begin
+        AccessToken := Connections.OauthToken;
+        HttpClient := Connections.SetupClient;
+
+        HttpClient.Request.CustomHeaders.Values['Authorization'] := ('Bearer '+ AccessToken.S['access_token']);
+        sResponse := HttpClient.Get(MainPix.frmPix.Enviroment + '/v2/locrec/'+ Modal.Identifier);
+
+        MainPix.frmPix.MemoResponse.text := sresponse;
+      end;
+
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Erro na requisição GET /v2/locrec/:id '#13#10#13#10 + e.Message);
+      end;
+    end;
+  finally
+    Modal.ClearRequestfields;
+  end;
+end;
+
+procedure pixUnlinkLocationRecurrenceAutomatic;
+var
+  sResponse: string;
+  Modal    : TViewPixIdDetail;
+begin
+  try
+    try
+      if not Assigned(Modal) then
+        Application.CreateForm(TViewPixIdDetail, Modal);
+
+      if Modal.ShowModal = 1 then
+      begin
+        AccessToken := Connections.OauthToken;
+        HttpClient := Connections.SetupClient;
+
+        HttpClient.Request.CustomHeaders.Values['Authorization'] := ('Bearer '+ AccessToken.S['access_token']);
+        sResponse := HttpClient.Delete(MainPix.frmPix.Enviroment + '/v2/locrec/'+Modal.Identifier+'/idRec');
+
+        MainPix.frmPix.MemoResponse.text := sresponse;
+      end;
+
+    except
+      on E: Exception do
+      begin
+        ShowMessage('Erro na requisição DELETE /v2/locrec/:id/txid '#13#10#13#10 + e.Message);
       end;
     end;
   finally

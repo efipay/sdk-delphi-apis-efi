@@ -76,7 +76,7 @@ begin
         WriteStringToStream(JsonToSend, Modal.Body, IndyTextEncoding_UTF8);
         JsonToSend.Position := 0;
 
-        sResponse := HttpClient.Put( MainPix.frmPix.Enviroment  + '/v2/gn/pix/' + Modal.txtIdEnvio.Text, JsonToSend);
+        sResponse := HttpClient.Put( MainPix.frmPix.Enviroment  + '/v3/gn/pix/' + Modal.txtIdEnvio.Text, JsonToSend);
 
         MainPix.frmPix.MemoResponse.text := sresponse;
       end;
@@ -84,7 +84,7 @@ begin
     except
       on E: Exception do
       begin
-        ShowMessage('Erro na Requisição PUT /v2/gn/pix/:idEnvio '#13#10#13#10 + e.Message);
+        ShowMessage('Erro na Requisição PUT /v3/gn/pix/:idEnvio '#13#10#13#10 + e.Message);
       end;
     end;
   finally
@@ -116,7 +116,7 @@ begin
     except
       on E: Exception do
       begin
-        ShowMessage('Erro na Requisição GET /v2/pix/:e2id '#13#10#13#10 + e.Message);
+        ShowMessage('Erro na Requisição GET /v2/pix/:e2eId '#13#10#13#10 + e.Message);
       end;
     end;
   finally
